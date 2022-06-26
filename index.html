@@ -37,7 +37,7 @@
 			}
 		</script>
 			
-			<audio id="audio" autoplay preload loop></audio>
+			<audio id="audio" autoplay preload></audio>
 			
 		<script type="text/javascript">
 			window.onkeydown = function(evt) {
@@ -249,6 +249,12 @@
 				sound[8] = "songs/8.mp3";
 				sound[9] = "songs/9.mp3";
 				sound[10] = "songs/10.mp3";
+
+			var aud = document.getElementById("audio");
+			aud.onended = function() {
+				getRandomSounds();
+				audio.play();
+			};
 
 			function getRandomSounds() {
 				var randomNum = Math.floor(Math.random() * sound.length);
