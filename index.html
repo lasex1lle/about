@@ -113,16 +113,23 @@
 		<style>
 
 			#hint {
-				margin: -440px;
-				padding-top: 0px;
-				text-align: center;
+				text-align: left;
 				color: #EEEEEE;
 				font-family: blogger-sans;
-				font-size: 23pt;
-				max-width: 1800px;
+				font-size: 18pt;
+				max-width: 500px;
 
 				transition: opacity 0.5s;
 				opacity: 11;
+			}
+
+			#music-name {
+				color: #c9d3e6ee;
+				margin-top: 2px;
+				font-family: blogger-sans;
+				font-size: 14pt;
+				transition: opacity 0.5s;
+				opacity: 0.2;
 			}
 
 			#hint.fade {
@@ -135,7 +142,7 @@
 				margin: 0;
 				display: none;
 				line-height: 24px;
-				font-size: 20px;
+				font-size: 25px;
 			}
 			
 			#aly-name {
@@ -145,62 +152,73 @@
 				font-size: 20px;
 				color: #EEEEEE;
 			}
+
+			.hints {
+				position: absolute;
+				top: -3%;
+				left: -1.5%;
+			}
+
+			.music {
+				position: absolute;
+				top: -3%;
+				left: 40%;				
+			}			
 			
 		</style>
-
-		<div class="center">
-			<center>
-			<p id="hint"></p>
-			<script>
-
-				function shuffle(a) {
-					var jar, x, i
-					for (i = a.length - 1; i > 0; i--) {
-						jar = Math.floor(Math.random() * (i + 1))
-						x = a[i]
-						a[i] = a[jar]
-						a[jar] = x
+	
+		<div class="hints">
+				<p id="hint"></p>
+	
+				<script>
+	
+					function shuffle(a) {
+						var jar, x, i
+						for (i = a.length - 1; i > 0; i--) {
+							jar = Math.floor(Math.random() * (i + 1))
+							x = a[i]
+							a[i] = a[jar]
+							a[jar] = x
+						}
+						return a
 					}
-					return a
-				}
-
-				var hints = shuffle([
-					'Hello World, my lover <3',
-					'Man, I havent come up with anything, but soon there will be something.',
-					'I love you, pussy!',
-					"It's russian web-page, yea, okey?",
-					'There is a music player, two buttons under the time <3 .',
-					'Lina? Hey, baby)'
-				])
-
-				var curHintID = -1
-				function nextHint() {
-					var el = document.getElementById('hint')
-					el.classList.add('fade')
-					setTimeout(function() {
-						curHintID ++
-						if (curHintID >= hints.length) curHintID = 0
-						el.innerHTML = hints[curHintID]
-						el.classList.remove('fade')
-					}, 500)
-				}
-				nextHint()
-				setInterval(nextHint, 5000)
-
-				function clamp(num){
-					return Math.min(Math.max(num, 0), 1)
-				}
-
-				var left = 1, stLeft = 5, filesTotal, wsTotal, filesLeft, wsLeft, finished;
-				function updateProgress() {
-					if (!filesLeft || !wsLeft) return
-					left = finished ? 0 : clamp(stLeft / 5) * 0.5 + clamp(filesLeft / filesTotal) * 0.1 + clamp(wsLeft / wsTotal) * 0.4
-				}	
-				
-			</script>
-		</center>
+	
+					var hints = shuffle([
+						'Hello World, my lover <3',
+						'Man, I havent come up with anything, but soon there will be something.',
+						'I love you, pussy!',
+						"It's russian web-page, yea, okey?",
+						'There is a music player, two buttons under the time <3 .',
+						'Lina? Hey, baby)'
+					])
+	
+					var curHintID = -1
+					function nextHint() {
+						var el = document.getElementById('hint')									
+						el.classList.add('fade')
+						setTimeout(function() {
+							curHintID ++
+							if (curHintID >= hints.length) curHintID = 0						
+							el.innerHTML = hints[curHintID]
+							el.classList.remove('fade')						
+						}, 500)
+					}
+					nextHint()
+					setInterval(nextHint, 5000)
+	
+					function clamp(num){
+						return Math.min(Math.max(num, 0), 1)
+					}
+	
+					var left = 1, stLeft = 5, filesTotal, wsTotal, filesLeft, wsLeft, finished;
+					function updateProgress() {
+						if (!filesLeft || !wsLeft) return
+						left = finished ? 0 : clamp(stLeft / 5) * 0.5 + clamp(filesLeft / filesTotal) * 0.1 + clamp(wsLeft / wsTotal) * 0.4
+					}	
+					
+				</script>
 		</div>
-		
+
 		<div class="center">
 			<center>
 				<p>L a s e x i l l e</p>
@@ -226,8 +244,10 @@
 							</script>
 
 							<br><br><br><br><br>
+							
+							<div id="pp" class="fas fa-pause" style="cursor: pointer; font-size: 16px; color: #c9d3e6ee;" onclick="pStartPause()"></div> <div id="sp" class="fas fa-stop" style="cursor: pointer; font-size: 16px; color: #c9d3e6ee;" onclick="pStop()"></div>
+							<pre align="middle"><p id="music-name"></p></pre>
 
-							<div id="pp" class="fas fa-pause" style="cursor: pointer; font-size: 16px;" onclick="pStartPause()"></div> <div id="sp" class="fas fa-stop" style="cursor: pointer; font-size: 16px" onclick="pStop()"></div>
 						</div>
 					</div>               
 				</div>
@@ -238,17 +258,18 @@
 		<script type="text/javascript">
 
 			var button = document.getElementById("pp");
-			var sound = new Array();
-				sound[0] = "songs/1.mp3";
-				sound[1] = "songs/2.mp3";
-				sound[3] = "songs/3.mp3";
-				sound[4] = "songs/4.mp3";
-				sound[5] = "songs/5.mp3";
-				sound[6] = "songs/6.mp3";
-				sound[7] = "songs/7.mp3";
-				sound[8] = "songs/8.mp3";
-				sound[9] = "songs/9.mp3";
-				sound[10] = "songs/10.mp3";
+			var sound = new Array();	
+				sound[0] = {mp3: "songs/1.mp3", name: "XXXTENTACION - MOONLIGHT"},
+				sound[1] = {mp3: "songs/2.mp3", name: "PLAYBOI CARTI - MAGNOLIA"},
+				sound[3] = {mp3: "songs/3.mp3", name: "IMAGINE DRAGONS - BELIVER"},
+				sound[4] = {mp3: "songs/4.mp3", name: "LIL PEEP - LIL JEEP"},
+				sound[5] = {mp3: "songs/5.mp3", name: "IIKAY SENCAN - ROCKSTAR"},
+				sound[6] = {mp3: "songs/6.mp3", name: "MARKUL & OXY - FATA MORGANA"},
+				sound[7] = {mp3: "songs/7.mp3", name: "MORGENSHTERN - SELYAVI (REMIX)"},
+				sound[8] = {mp3: "songs/8.mp3", name: "COOLIO - GANGSTA PARADISE"},
+				sound[9] = {mp3: "songs/9.mp3", name: "LIL PEEP & XXXTENTACION - FALLING DOWN"},
+				sound[10] = {mp3: "songs/10.mp3", name: "THE SCORE - BORN FOR THIS"}
+				sound[11] = {mp3: "songs/11.mp3", name: "SUICIDE BOYS - KILL YOURSELF"}
 
 			var aud = document.getElementById("audio");
 			aud.onended = function() {
@@ -256,9 +277,14 @@
 				audio.play();
 			};
 
+			var currentTrack;					
+
 			function getRandomSounds() {
 				var randomNum = Math.floor(Math.random() * sound.length);
-				document.getElementById("audio").src = sound[randomNum];
+				document.getElementById("audio").src = sound[randomNum].mp3;
+
+				var el = document.getElementById('music-name')
+				currentTrack = sound[randomNum].name
 			}
 
 			function pStop() {
@@ -267,9 +293,20 @@
 			}
 
 			function pStartPause() {
-				if (audio.paused) { getRandomSounds(); audio.play()} else {audio.pause()}
+				if (audio.paused) { 
+					if (audio.currentTime == 0) { getRandomSounds() } else audio.play()
+				} else { audio.pause() }
+
 				audio.volume = 0.4;
 			}
+
+
+			function checkTrack() {
+				var el = document.getElementById('music-name')
+				el.innerHTML = currentTrack || 'START THE FUCKING MUSIC, BRO ;)'
+				setTimeout(checkTrack, 10);			
+			}
+			checkTrack()
 
 			function rButtonCheck() {
 				if (audio.paused) {button.className = "fas fa-play"} else {button.className = "fas fa-pause"}
