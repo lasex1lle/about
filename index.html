@@ -315,14 +315,6 @@
 
 				var el = document.getElementById('music-name')
 				currentTrack = sound[randomNum].name
-
-				setTimeout(function() {					
-					if (currentTrack == "OOES - ЗИМА") { 
-						setTimeout(function() {
-							if (audio.currentTime > 32 && !audio.paused) { snow() }
-						}, 34000)
-					}
-				}, 1000);
 			}
 
 			function pStop() {
@@ -335,6 +327,14 @@
 					if (audio.currentTime == 0) { getRandomSounds() } else audio.play()
 				} else { audio.pause() }
 
+				setTimeout(function() {					
+					if (currentTrack == "OOES - ЗИМА") { 
+						setTimeout(function() {
+							if (audio.currentTime > 32 && !audio.paused) { snow() }
+						}, 34000)
+					}
+				}, 1000);
+				
 				audio.volume = 0.4;
 			}
 
