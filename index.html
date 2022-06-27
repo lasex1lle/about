@@ -298,7 +298,7 @@
 				sound[11] = {mp3: "songs/11.mp3", name: "SUICIDE BOYS - KILL YOURSELF"}
 				sound[12] = {mp3: "songs/12.mp3", name: "MORGEN, IMAN, FETTY, KDDK - LECK"}			
 				sound[13] = {mp3: "songs/13.mp3", name: "MORGENSHTERN - 12"}			
-				sound[14] = {mp3: "songs/14.mp3", name: "EEOS - ЗИМА"}			
+				sound[14] = {mp3: "songs/14.mp3", name: "OOES - ЗИМА"}			
 
 
 			var aud = document.getElementById("audio");
@@ -316,11 +316,13 @@
 				var el = document.getElementById('music-name')
 				currentTrack = sound[randomNum].name
 
-				if (currentTrack == "EEOS - ЗИМА") { 
-					setTimeout(function() {
-						if (audio.currentTime > 32 && !audio.paused) { snow() }
-					}, 33000)
-				}
+				setTimeout(function() {					
+					if (currentTrack == "OOES - ЗИМА") { 
+						setTimeout(function() {
+							if (audio.currentTime > 32 && !audio.paused) { snow() }
+						}, 34000)
+					}
+				}, 1000);
 			}
 
 			function pStop() {
