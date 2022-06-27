@@ -326,15 +326,6 @@
 				if (audio.paused) { 
 					if (audio.currentTime == 0) { getRandomSounds() } else audio.play()
 				} else { audio.pause() }
-
-				setTimeout(function() {					
-					if (currentTrack == "OOES - ЗИМА") { 
-						setTimeout(function() {
-							if (audio.currentTime > 32 && !audio.paused) { snow() }
-						}, 34000)
-					}
-				}, 1000);
-				
 				audio.volume = 0.4;
 			}
 
