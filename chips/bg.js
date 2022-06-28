@@ -31,7 +31,6 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * max) + min;
 }
 
-// audio.onplay = function() { 
-//     star.style.opacity = 0;
-// };
-
+createStars(1, 100);
+createStars(2, 85);
+createStars(3, 70);

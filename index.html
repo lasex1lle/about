@@ -294,12 +294,8 @@
 				document.getElementById("audio").src = sound[randomNum].mp3;
 
 				var el = document.getElementById('music-name')
-				currentTrack = sound[randomNum].name			
+				currentTrack = sound[randomNum].name
 			}
-
-			audio.onplay = function() {
-				if (currentTrack == "OOES - ЗИМА") { snow() }
-			};
 			
 			function pStop() {
 				audio.pause();
@@ -312,7 +308,6 @@
 				} else { audio.pause() }
 				audio.volume = 0.4;
 			}
-
 
 			function checkTrack() {
 				var el = document.getElementById('music-name')

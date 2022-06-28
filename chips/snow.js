@@ -1,3 +1,4 @@
+var interval;
 
 function snow(time) {
 
@@ -16,7 +17,7 @@ function snow(time) {
     // Определяем количество миллисекунд для создания снежинки
     var millisec = 50;
     // 2, установить первый таймер, периодический таймер и каждый раз генерировать снежинку (миллисекунды);
-    var interval = setInterval(function() { // После загрузки страницы таймер начинает работать
+    interval = setInterval(function() { // После загрузки страницы таймер начинает работать
         // Произвольно генерируем значение left в начале падения снежинки, что эквивалентно положению оси X в начале
         var startLeft = Math.random() * documentWidth;
 
@@ -66,9 +67,9 @@ function snow(time) {
             }, 6000);
         }, 0);        
     }, 50);
-    
-    audio.onended = function() {
-        clearInterval(interval)
-    };
-    
+      
 }
+
+audio.onpaused = function() {
+    clearInterval(interval)
+};		

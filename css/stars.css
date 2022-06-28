@@ -22,5 +22,5 @@ height: 3px;
 
 @keyframes move {
     0%{ transform: translateY(0); }
-    200%{ transform: translateY(-1000px);}
+    100%{ transform: translateY(-300px);}
 }
