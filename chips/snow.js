@@ -5,7 +5,7 @@ function snow(time) {
     var flake = document.createElement('div');
     
     // Символ снежинки ❄❉❅❆✻✼❇❈❊✥✺
-    flake.innerHTML = '❆';
+    flake.innerHTML = '❇';
     flake.style.cssText = 'position:absolute;color:#fff;';
 
     // Получаем высоту страницы, которая эквивалентна положению оси Y при падении снежинок
@@ -52,7 +52,7 @@ function snow(time) {
 
         // Устанавливаем второй таймер, одноразовый таймер,
         // Когда первый таймер генерирует снежинки и отображает их на странице, измените стиль снежинок, чтобы они двигались;
-        var timer2 = setTimeout(function() {
+        setTimeout(function() {
             // Изменяем стиль во второй раз
             cloneFlake.style.cssText += `
                         left: ${endLeft}px;
@@ -61,14 +61,14 @@ function snow(time) {
                     `;
 
             // 4. Установить третий таймер и удалить снежинку, когда она упадет.
-            var timer1 = setTimeout(function() {
+            setTimeout(function() {
                 cloneFlake.remove();
-            }, durationTime);
+            }, 6000);
         }, 0);        
-    }, millisec);
+    }, 50);
     
-    setTimeout(function() {
+    audio.onended = function() {
         clearInterval(interval)
-    }, 50000)
+    };
     
 }

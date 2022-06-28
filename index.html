@@ -1,6 +1,7 @@
 <meta charset="UTF-8"> 
 <html>
 	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/stars.css">
     <link rel="shortcut icon"href="https://img.icons8.com/color/344/idea.png">
 	
 	<style>
@@ -22,7 +23,8 @@
 		
 		<canvas></canvas>
 		
-		<script src="snow.js"></script>
+		<script src="chips/snow.js"></script>
+		<script src="chips/bg.js"></script>
 
 		<title>Lasexille</title>
 
@@ -59,6 +61,7 @@
 		</script>
 
 		<style>
+			
 			body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
 
 			a {
@@ -262,27 +265,6 @@
 
 		<script type="text/javascript">
 
-			var Timer = function(callback, delay) {
-				var timerId, start, remaining = delay;
-
-				this.pause = function() {
-					window.clearTimeout(timerId);
-					timerId = null;
-					remaining -= Date.now() - start;
-				};
-
-				this.resume = function() {
-					if (timerId) {
-						return;
-					}
-
-					start = Date.now();
-					timerId = window.setTimeout(callback, remaining);
-				};
-
-				this.resume();
-			};
-
 			var button = document.getElementById("pp");
 			var sound = new Array();	
 				sound[0] = {mp3: "songs/1.mp3", name: "XXXTENTACION - MOONLIGHT"},
@@ -300,9 +282,7 @@
 				sound[13] = {mp3: "songs/13.mp3", name: "MORGENSHTERN - 12"}			
 				sound[14] = {mp3: "songs/14.mp3", name: "OOES - ЗИМА"}			
 
-
-			var aud = document.getElementById("audio");
-			aud.onended = function() {
+			audio.onended = function() {
 				getRandomSounds();
 				audio.play();
 			};
@@ -314,9 +294,13 @@
 				document.getElementById("audio").src = sound[randomNum].mp3;
 
 				var el = document.getElementById('music-name')
-				currentTrack = sound[randomNum].name
+				currentTrack = sound[randomNum].name			
 			}
 
+			audio.onplay = function() {
+				if (currentTrack == "OOES - ЗИМА") { snow() }
+			};
+			
 			function pStop() {
 				audio.pause();
 				audio.currentTime = 0;
@@ -328,6 +312,7 @@
 				} else { audio.pause() }
 				audio.volume = 0.4;
 			}
+
 
 			function checkTrack() {
 				var el = document.getElementById('music-name')
@@ -341,12 +326,12 @@
 				setTimeout(rButtonCheck, 10);			
 			}
 			rButtonCheck()
-
+			
 		</script>
 
 		<style>
 			html, body {
-				color: #EEEEEE;
+				color: #eeeeee;
 			}
 
 			body {
@@ -445,9 +430,9 @@
 				DENSITY_DISSIPATION: 0.98,
 				VELOCITY_DISSIPATION: 0.99,
 				PRESSURE_DISSIPATION: 0.8,
-				PRESSURE_ITERATIONS: 25,
-				CURL: 30,
-				SPLAT_RADIUS: 0.005
+				PRESSURE_ITERATIONS: 215,
+				CURL: 50,
+				SPLAT_RADIUS: 0.002
 			};
 
 			var pointers   = [];
