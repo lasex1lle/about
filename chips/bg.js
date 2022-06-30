@@ -7,6 +7,8 @@ function createStars(type, quantity) {
 
         star.innerHTML = '';
         
+        var randomSize = randomNumber(1, 4)
+
         var documentHieght = window.innerHeight - 40;
         var documentWidth = window.innerWidth - 50;
 

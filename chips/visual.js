@@ -33,13 +33,15 @@ function startVisual() {
     // Create a set of pre-defined bars
     for( let i = 0; i < NBR_OF_BARS; i++ ) {
 
+        var randomSize = randomNumber(1, 4)
+
         const bar = document.createElement("DIV");
         bar.setAttribute("id", "bar" + i);
         bar.classList.add('star', `type-1`);
         bar.style.left = Math.random() * documentWidth;;
         bar.style.bottom = `${randomNumber(1, 99)}%`;
-        bar.style.animationDuration = `${randomNumber(50, 200)}s`;
-        bar.style.opacity = 0.8
+        // bar.style.animationDuration = `${randomNumber(50, 200)}s`;
+        bar.style.opacity = 1
 
         document.body.appendChild(bar);
 
@@ -67,7 +69,7 @@ function startVisual() {
 
             // If fd is undefined, default to 0, then make sure fd is at least 4
             // This will make make a quiet frequency at least 4px high for visual effects
-            const barHeight = Math.max(3, fd / 30 || 0);
+            const barHeight = Math.max(2, fd / 30 || 0);
 
             const rR = Math.max(255, fd * 55 || 0);
             const rB = Math.max(255, fd * 55 || 0);
@@ -75,6 +77,7 @@ function startVisual() {
 
             bar.style.height = barHeight + "px";
             bar.style.width = barHeight + "px";
+            // bar.style.filter = `blur(${Math.max(0, fd / 100)}px)`
         }
 
         // At the next animation frame, call ourselves
