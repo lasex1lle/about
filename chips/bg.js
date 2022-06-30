@@ -17,7 +17,7 @@ function createStars(type, quantity) {
         star.style.bottom = `${randomNumber(1, 99)}%`;
         star.style.position = 'absolute'
         star.style.animationDuration = `${randomNumber(50, 200)}s`;
-        star.style.opacity = 0.4;
+        star.style.opacity = 0.9;
 
         document.body.appendChild(star);
     }
@@ -31,6 +31,9 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * max) + min;
 }
 
-createStars(1, 100);
-createStars(2, 85);
-createStars(3, 70);
+// createStars(1, 100);
+// createStars(2, 85);
+// createStars(3, 70);
+createStars(4, 4);
+
+

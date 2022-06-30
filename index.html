@@ -1,5 +1,6 @@
 <meta charset="UTF-8"> 
 <html>
+	<link rel="stylesheet" href="css/equa.css">
 	<link rel="stylesheet" href="css/all.css">
 	<link rel="stylesheet" href="css/stars.css">
     <link rel="shortcut icon"href="https://img.icons8.com/color/344/idea.png">
@@ -22,7 +23,8 @@
 	<body oncontextmenu="return false" unselectable="on" onselectstart="return false;">
 		
 		<canvas></canvas>
-		
+
+		<script src="chips/visual.js"></script>
 		<script src="chips/snow.js"></script>
 		<script src="chips/bg.js"></script>
 
@@ -82,7 +84,7 @@
 					-moz-animation: fadein 3s; /* Firefox */
 					-webkit-animation: fadein 3s; /* Safari and Chrome */
 					-o-animation: fadein 3s; /* Opera */
-			};
+			};		
 
 			@keyframes fadein {
 				from {
@@ -167,6 +169,11 @@
 				left: -1.5%;
 			}
 
+			.visual {
+				position: absolute;
+				width: 100%;
+			}
+
 			.music {
 				position: absolute;
 				top: -3%;
@@ -175,6 +182,11 @@
 			
 		</style>
 	
+	<div class="visual">
+		<div class="visualizer-container"></div>            
+
+	</div>
+
 		<div class="hints">
 				<p id="hint"></p>
 	
@@ -255,13 +267,11 @@
 							
 							<div id="pp" class="fas fa-pause" style="cursor: pointer; font-size: 16px; color: #c9d3e6ee;" onclick="pStartPause()"></div> <div id="sp" class="fas fa-stop" style="cursor: pointer; font-size: 16px; color: #c9d3e6ee;" onclick="pStop()"></div>
 							<pre align="middle"><p id="music-name"></p></pre>
-
 						</div>
-					</div>               
+					</div>   
 				</div>
 			</center>
 		</div>
-
 
 		<script type="text/javascript">
 
@@ -305,10 +315,12 @@
 
 			function pStartPause() {
 				if (audio.paused) { 
-					if (audio.currentTime == 0) { getRandomSounds() } else audio.play()
+					if (audio.currentTime == 0) { getRandomSounds(); audio.play() } else audio.play()
 				} else { audio.pause() }
 				audio.volume = 0.4;
 			}
+
+			startVisual()
 
 			function checkTrack() {
 				var el = document.getElementById('music-name')
@@ -338,6 +350,7 @@
 			}
 
 			canvas {
+				background-color: #eee;
 				width: 100%;
 				height: 100%;
 			}
