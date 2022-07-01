@@ -1,7 +1,7 @@
 function startVisual() {
 
     // The number of bars that should be displayed
-    const NBR_OF_BARS = 200;
+    const NBR_OF_BARS = 100;
 
     // Get the audio element tag
     const audio = document.getElementById("audio");
@@ -38,7 +38,7 @@ function startVisual() {
         const bar = document.createElement("DIV");
         bar.setAttribute("id", "bar" + i);
         bar.classList.add('star', `type-1`);
-        bar.style.left = Math.random() * documentWidth;;
+        bar.style.left = `${randomNumber(1, 99)}%`;
         bar.style.bottom = `${randomNumber(1, 99)}%`;
         // bar.style.animationDuration = `${randomNumber(50, 200)}s`;
         bar.style.opacity = 1
@@ -85,6 +85,7 @@ function startVisual() {
 
     }
 
+    // audio.play()
     renderFrame();
 };
 
