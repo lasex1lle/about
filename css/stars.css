@@ -24,11 +24,9 @@
 }
 
 .type-4 {
-    background-image: url(http://www.example.com/bck.png);
-
     background: rgb(170, 171, 255);
-    width: 53px;
-    height: 53px;
+    /* width: 53px; */
+    /* height: 53px; */
     filter: blur(55px);
 }
 
