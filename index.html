@@ -296,16 +296,21 @@
 			audio.onended = function() {
 				getRandomSounds();
 				audio.play();
-			};
+			};		
 
 			var currentTrack;					
+			var currentTrack_url;
+
+			audio.src = sound[4].mp3;
+
+			// startVisual(audio)
 
 			function getRandomSounds() {
 				var randomNum = Math.floor(Math.random() * sound.length);
 				document.getElementById("audio").src = sound[randomNum].mp3;
 
-				var el = document.getElementById('music-name')
 				currentTrack = sound[randomNum].name
+				currentTrack_url = sound[randomNum].mp3
 			}
 			
 			function pStop() {
@@ -315,12 +320,10 @@
 
 			function pStartPause() {
 				if (audio.paused) { 
-					if (audio.currentTime == 0) { getRandomSounds(); audio.play() } else audio.play()
+					if (audio.currentTime == 0) { getRandomSounds() } else audio.play()
 				} else { audio.pause() }
 				audio.volume = 0.4;
-			}
-
-			startVisual()
+			}			
 
 			function checkTrack() {
 				var el = document.getElementById('music-name')

@@ -1,16 +1,19 @@
-function startVisual(audio) {
+function startVisual() {
 
     // The number of bars that should be displayed
-    var NBR_OF_BARS = 100;
+    const NBR_OF_BARS = 100;
+
+    // Get the audio element tag
+    const audio = document.getElementById("audio");
 
     // Create an audio context
-    var ctx = new AudioContext();
+    const ctx = new AudioContext();
 
     // Create an audio source
-    var audioSource = ctx.createMediaElementSource(audio);
+    const audioSource = ctx.createMediaElementSource(audio);
 
     // Create an audio analyzer
-    var analayzer = ctx.createAnalyser();
+    const analayzer = ctx.createAnalyser();
 
     // Connect the source, to the analyzer, and then back the the context's destination
     audioSource.connect(analayzer);
@@ -20,6 +23,12 @@ function startVisual(audio) {
     const frequencyData = new Uint8Array(analayzer.frequencyBinCount);
     analayzer.getByteFrequencyData(frequencyData);
     console.log("frequencyData", frequencyData);
+
+    // Get the visualizer container
+
+    const visualizerContainer = document.querySelector(".visualizer-container");
+    var documentHieght = window.innerHeight - 40;
+    var documentWidth = window.innerWidth - 50;
 
     // Create a set of pre-defined bars
     for( let i = 0; i < NBR_OF_BARS; i++ ) {
@@ -76,8 +85,7 @@ function startVisual(audio) {
 
     }
 
-    // audio.play();
-    audio.volume = 0.4;
-
+    // audio.play()
     renderFrame();
 };
+
